@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#145c37">
+
+    <title>FOODTECH CALC | Technologie alimentaire</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+
+    <script src="js/calculs.js" defer></script>
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>FOODTECH</h2>
+            <p>CALC - Technologie alimentaire</p>
+        </div>
+
+        <nav>
+            <a href="#accueil">Accueil</a>
+            <a href="#outils">Modules de calcul</a>
+            <a href="#calculateur">Rendement</a>
+            <a href="#bilan">Bilan matière</a>
+            <a href="#quantite">Matière première</a>
+            <a href="#dilution">Concentration et dilution</a>
+            <a href="#formulation">Formulation alimentaire</a>
+            <a href="#historique">Historique</a>
+            <a href="#apropos">À propos</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>FOODTECH CALC</p>
+            <p>Version 1.1</p>
+        </div>
+    </aside>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h2>FOODTECH CALC</h2>
+                <p>Outils de calcul en technologie alimentaire</p>
+            </div>
+            <span class="version">VERSION 1.1</span>
+        </header>
+
+        <!-- ACCUEIL -->
+        <section id="accueil" class="welcome">
+            <h1>Bienvenue sur FOODTECH CALC</h1>
+            <p>
+                Une plateforme dédiée aux calculs scientifiques,
+                à la transformation et à la formulation alimentaire.
+            </p>
+        </section>
+
+        <!-- STATISTIQUES -->
+        <section class="stats-grid">
+            <article class="stat-card">
+                <h3>Modules disponibles</h3>
+                <p>05</p>
+            </article>
+
+            <article class="stat-card">
+                <h3>Historique</h3>
+                <p id="nombreHistorique">0</p>
+            </article>
+
+            <article class="stat-card">
+                <h3>Application</h3>
+                <p>Active</p>
+            </article>
+        </section>
+
+        <!-- LES CINQ MODULES -->
+        <section id="outils">
+            <div class="section-heading">
+                <h2>Nos modules de calcul</h2>
+                <span class="status">05 modules disponibles</span>
+            </div>
+
+            <div class="tools-grid">
+
+                <article class="tool-card">
+                    <div class="tool-icon">⚖️</div>
+                    <span class="status">Disponible</span>
+                    <h3>Calcul du rendement</h3>
+                    <p>
+                        Déterminez le rendement de vos opérations
+                        de transformation alimentaire.
+                    </p>
+                    <button type="button" onclick="afficherCalculateur()">
+                        Utiliser le calculateur
+                    </button>
+                </article>
+
+                <article class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <span class="status">Disponible</span>
+                    <h3>Bilan matière</h3>
+                    <p>
+                        Suivez les entrées, les sorties et les pertes
+                        de matière de vos procédés.
+                    </p>
+                    <button type="button" onclick="afficherBilan()">
+                        Utiliser le calculateur
+                    </button>
+                </article>
+
+                <article class="tool-card">
+                    <div class="tool-icon">🏭</div>
+                    <span class="status">Disponible</span>
+                    <h3>Quantité de matière première</h3>
+                    <p>
+                        Estimez la quantité initiale nécessaire
+                        pour atteindre une production cible.
+                    </p>
+                    <button type="button" onclick="afficherQuantite()">
+                        Utiliser le calculateur
+                    </button>
+                </article>
+
+                <article class="tool-card">
+                    <div class="tool-icon">🧪</div>
+                    <span class="status">Disponible</span>
+                    <h3>Concentration et dilution</h3>
+                    <p>
+                        Calculez les volumes nécessaires pour préparer
+                        une solution à la concentration souhaitée.
+                    </p>
+                    <button type="button" onclick="afficherDilution()">
+                        Utiliser le calculateur
+                    </button>
+                </article>
+
+                <article class="tool-card">
+                    <div class="tool-icon">⚗️</div>
+                    <span class="status new-status">Nouveau module</span>
+                    <h3>Formulation alimentaire</h3>
+                    <p>
+                        Calculez les masses des ingrédients à partir
+                        de leurs pourcentages massiques.
+                    </p>
+                    <button type="button" onclick="afficherFormulation()">
+                        Utiliser le calculateur
+                    </button>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- MODULE 1 : RENDEMENT -->
+        <section id="calculateur" class="calculator-section">
+            <h2>1. Calcul du rendement</h2>
+            <p class="description">
+                Le rendement exprime le rapport entre la masse obtenue
+                et la masse initiale.
+            </p>
+
+            <div class="form-group">
+                <label for="masseInitiale">Masse initiale (kg)</label>
+                <input type="number" id="masseInitiale" min="0" step="any"
+                    placeholder="Exemple : 100">
+            </div>
+
+            <div class="form-group">
+                <label for="masseFinale">Masse finale (kg)</label>
+                <input type="number" id="masseFinale" min="0" step="any"
+                    placeholder="Exemple : 35">
+            </div>
+
+            <button type="button" onclick="calculerRendement()">
+                Calculer le rendement
+            </button>
+
+            <div id="resultatRendement" class="result-box" aria-live="polite">
+                Le résultat apparaîtra ici.
+            </div>
+        </section>
+
+        <!-- MODULE 2 : BILAN MATIERE -->
+        <section id="bilan" class="calculator-section">
+            <h2>2. Bilan matière</h2>
+            <p class="description">
+                Comparez la masse entrante à la masse totale sortante.
+            </p>
+
+            <div class="form-group">
+                <label for="masseEntree">Masse entrante (kg)</label>
+                <input type="number" id="masseEntree" min="0" step="any"
+                    placeholder="Exemple : 100">
+            </div>
+
+            <div class="form-group">
+                <label for="masseProduit">Masse du produit obtenu (kg)</label>
+                <input type="number" id="masseProduit" min="0" step="any"
+                    placeholder="Exemple : 70">
+            </div>
+
+            <div class="form-group">
+                <label for="masseSousProduits">Masse des sous-produits récupérés (kg)</label>
+                <input type="number" id="masseSousProduits" min="0" step="any"
+                    placeholder="Exemple : 20">
+            </div>
+
+            <button type="button" onclick="calculerBilan()">
+                Calculer le bilan
+            </button>
+
+            <div id="resultatBilan" class="result-box" aria-live="polite">
+                Le résultat apparaîtra ici.
+            </div>
+        </section>
+
+        <!-- MODULE 3 : MATIERE PREMIERE -->
+        <section id="quantite" class="calculator-section">
+            <h2>3. Quantité de matière première</h2>
+            <p class="description">
+                Déterminez la masse de matière première nécessaire
+                pour atteindre une production cible.
+            </p>
+
+            <div class="form-group">
+                <label for="masseCible">Masse de produit souhaitée (kg)</label>
+                <input type="number" id="masseCible" min="0" step="any"
+                    placeholder="Exemple : 50">
+            </div>
+
+            <div class="form-group">
+                <label for="rendementConnu">Rendement du procédé (%)</label>
+                <input type="number" id="rendementConnu" min="0" max="100"
+                    step="any" placeholder="Exemple : 70">
+            </div>
+
+            <button type="button" onclick="calculerQuantite()">
+                Calculer la matière première
+            </button>
+
+            <div id="resultatQuantite" class="result-box" aria-live="polite">
+                Le résultat apparaîtra ici.
+            </div>
+        </section>
+
+        <!-- MODULE 4 : DILUTION -->
+        <section id="dilution" class="calculator-section">
+            <h2>4. Concentration et dilution</h2>
+            <p class="description">
+                Calcul basé sur la relation C1 × V1 = C2 × V2.
+                Les concentrations doivent être exprimées dans la même unité.
+            </p>
+
+            <div class="form-group">
+                <label for="concentrationInitiale">
+                    Concentration initiale C1
+                </label>
+                <input type="number" id="concentrationInitiale"
+                    min="0" step="any" placeholder="Exemple : 20">
+            </div>
+
+            <div class="form-group">
+                <label for="concentrationFinale">
+                    Concentration finale C2
+                </label>
+                <input type="number" id="concentrationFinale"
+                    min="0" step="any" placeholder="Exemple : 5">
+            </div>
+
+            <div class="form-group">
+                <label for="volumeFinal">Volume final V2 (L)</label>
+                <input type="number" id="volumeFinal"
+                    min="0" step="any" placeholder="Exemple : 10">
+            </div>
+
+            <button type="button" onclick="calculerDilution()">
+                Calculer la dilution
+            </button>
+
+            <div id="resultatDilution" class="result-box" aria-live="polite">
+                Le résultat apparaîtra ici.
+            </div>
+        </section>
+
+        <!-- MODULE 5 : FORMULATION -->
+        <section id="formulation" class="calculator-section">
+            <h2>5. Formulation alimentaire</h2>
+
+            <p class="description">
+                Calculez les masses de chaque ingrédient à partir
+                de leur pourcentage massique dans un lot.
+            </p>
+
+            <div class="form-group">
+                <label for="nomFormulation">Nom de la formulation</label>
+                <input type="text" id="nomFormulation"
+                    placeholder="Exemple : Formulation expérimentale">
+            </div>
+
+            <div class="form-group">
+                <label for="masseLotFormulation">Masse totale du lot</label>
+                <input type="number" id="masseLotFormulation"
+                    min="0" step="any" placeholder="Exemple : 100">
+            </div>
+
+            <div class="form-group">
+                <label for="uniteMasseFormulation">Unité de masse</label>
+                <select id="uniteMasseFormulation">
+                    <option value="kg">Kilogramme (kg)</option>
+                    <option value="g">Gramme (g)</option>
+                </select>
+            </div>
+
+            <h3>Composition de la formulation</h3>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ingrédient</th>
+                            <th>Pourcentage (%)</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lignesIngredients"></tbody>
+                </table>
+            </div>
+
+            <div class="formulation-actions">
+                <button type="button" id="ajouterIngredient"
+                    class="secondary-button">
+                    + Ajouter un ingrédient
+                </button>
+
+                <button type="button" id="calculerFormulation">
+                    Calculer la formulation
+                </button>
+
+                <button type="button" id="exporterFormulationCSV"
+                    class="secondary-button">
+                    Exporter en CSV
+                </button>
+
+                <button type="button" id="reinitialiserFormulation"
+                    class="danger-button">
+                    Réinitialiser
+                </button>
+            </div>
+
+            <div id="validationFormulation" aria-live="polite"></div>
+
+            <div id="resultatFormulation" class="result-box"
+                aria-live="polite">
+                Le résultat de la formulation apparaîtra ici.
+            </div>
+        </section>
+
+        <!-- HISTORIQUE -->
+        <section id="historique" class="calculator-section">
+            <h2>Historique des calculs</h2>
+
+            <p class="description">
+                Retrouvez les opérations enregistrées sur cet appareil.
+            </p>
+
+            <div class="history-actions">
+                <button type="button" onclick="exporterHistorique()"
+                    class="secondary-button">
+                    Exporter l'historique CSV
+                </button>
+
+                <button type="button" onclick="effacerHistorique()"
+                    class="danger-button">
+                    Effacer l'historique
+                </button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Type de calcul</th>
+                            <th>Données</th>
+                            <th>Résultat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listeHistorique">
+                        <tr>
+                            <td colspan="4">Aucun calcul enregistré.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- A PROPOS -->
+        <section id="apropos" class="info-section">
+            <h2>À propos de FOODTECH CALC</h2>
+            <p>
+                FOODTECH CALC est un outil d'aide aux calculs
+                en technologie alimentaire. Il accompagne les étudiants,
+                techniciens et professionnels dans certaines opérations
+                de calcul et de formulation.
+            </p>
+            <p class="notice">
+                Les résultats sont des aides au calcul. Ils ne remplacent
+                pas les essais expérimentaux, les contrôles de qualité,
+                les exigences réglementaires ni la validation scientifique
+                d'un procédé alimentaire.
+            </p>
+        </section>
+
+        <footer>
+            <p>FOODTECH CALC — Technologie alimentaire et innovation.</p>
+        </footer>
+
+    </main>
+</div>
+
+</body>
+</html>
