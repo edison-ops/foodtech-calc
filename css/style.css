@@ -1,0 +1,403 @@
+
+/* CONFIGURATION GENERALE */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #F3F6F4;
+    color: #24352D;
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* MENU LATERAL */
+
+.sidebar {
+    width: 250px;
+    background: #176B49;
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 50px;
+}
+
+.logo-icon {
+    font-size: 35px;
+}
+
+.logo h2 {
+    margin: 0;
+    font-size: 19px;
+}
+
+.logo p {
+    margin: 3px 0;
+    font-size: 13px;
+    letter-spacing: 4px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar nav a {
+    color: white;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* CONTENU PRINCIPAL */
+
+.main-content {
+    flex: 1;
+    padding: 30px 45px;
+    min-width: 0;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 45px;
+}
+
+.small-title {
+    color: #718078;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.topbar h2 {
+    margin: 5px 0;
+    font-size: 20px;
+}
+
+.user-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #176B49;
+    color: white;
+    display: grid;
+    place-items: center;
+    font-weight: bold;
+}
+
+/* BIENVENUE */
+
+.welcome {
+    background: white;
+    padding: 38px;
+    border-radius: 14px;
+    border-left: 5px solid #176B49;
+    margin-bottom: 40px;
+}
+
+.welcome-label {
+    color: #176B49;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.welcome h1 {
+    font-size: 32px;
+    line-height: 1.4;
+    margin: 15px 0;
+}
+
+.welcome h1 span {
+    color: #176B49;
+}
+
+.welcome > p:last-child {
+    color: #718078;
+    line-height: 1.7;
+}
+
+/* CALCULATEURS */
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.section-heading h2 {
+    margin-bottom: 5px;
+}
+
+.section-heading p {
+    color: #718078;
+    font-size: 14px;
+}
+
+.tool-count {
+    font-size: 11px;
+    color: #176B49;
+    font-weight: bold;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.tool-card {
+    background: white;
+    border: 1px solid #E3EAE5;
+    padding: 23px;
+    border-radius: 12px;
+}
+
+.tool-icon {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.status {
+    display: inline-block;
+    font-size: 10px;
+    color: #A66B13;
+    background: #FFF4DE;
+    padding: 6px 9px;
+    border-radius: 20px;
+}
+
+.tool-card h3 {
+    font-size: 17px;
+    margin: 16px 0 10px;
+}
+
+.tool-card p {
+    color: #718078;
+    font-size: 13px;
+    line-height: 1.7;
+    min-height: 65px;
+}
+
+.tool-card button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    background: #E8EFEB;
+    color: #176B49;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: not-allowed;
+}
+
+/* HISTORIQUE */
+
+.info-section {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 35px;
+}
+
+.info-section p {
+    color: #718078;
+    font-size: 14px;
+}
+
+/* PIED DE PAGE */
+
+footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    border-top: 1px solid #DCE5DF;
+    color: #718078;
+    font-size: 12px;
+}
+
+/* VERSION MOBILE */
+
+@media (max-width: 900px) {
+    .tools-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .main-content {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 600px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    .sidebar nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .sidebar nav a {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    .main-content {
+        padding: 18px;
+    }
+
+    .topbar {
+        margin-bottom: 25px;
+    }
+
+    .welcome {
+        padding: 22px;
+    }
+
+    .welcome h1 {
+        font-size: 25px;
+    }
+
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+
+/* FORMULAIRE DU CALCULATEUR */
+
+.form-group {
+    margin: 20px 0;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    max-width: 450px;
+    padding: 13px;
+    border: 1px solid #DCE5DF;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+.form-group input:focus {
+    outline: 2px solid #176B49;
+    border-color: #176B49;
+}
+
+.calculate-button {
+    padding: 13px 22px;
+    background: #176B49;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.calculate-button:hover {
+    background: #125439;
+}
+
+.result-box {
+    margin-top: 22px;
+    padding: 18px;
+    background: #E8F3EC;
+    border-left: 4px solid #176B49;
+    border-radius: 7px;
+    line-height: 1.7;
+}
+
+
+/* HISTORIQUE */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    white-space: nowrap;
+}
+
+th {
+    background-color: #e8f5e9;
+    color: #176b3a;
+}
+
+td {
+    color: #333;
+}
+
+table tr:hover {
+    background-color: #f5f5f5;
+}

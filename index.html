@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOODTECH CALC | Tableau de bord</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#176b3a">
+</head>
+<script src="js/calculs.js"></script>
+<body>
+
+    <div class="app-container">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">🧪</span>
+                <div>
+                    <h2>FOODTECH</h2>
+                    <p>CALC</p>
+                </div>
+            </div>
+            
+            <nav>
+                <a href="#accueil" class="active">⌂ Tableau de bord</a>
+                <a href="#outils">▦ Calculateurs</a>
+                <a href="#historique">◷ Historique</a>
+                <a href="#apropos">ⓘ À propos</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Version 1.0</p>
+                <p>Food Technology Tools</p>
+            </div>
+        </aside>
+
+        <!-- CONTENU PRINCIPAL -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <p class="small-title">ESPACE DE TRAVAIL</p>
+                    <h2>FOODTECH CALC</h2>
+                </div>
+                <div class="user-icon">EJ</div>
+            </header>
+
+            <!-- ACCUEIL -->
+            <section id="accueil" class="welcome">
+                <p class="welcome-label">BIENVENUE DANS VOTRE ESPACE</p>
+                <h1>La technologie alimentaire, <br>
+                    <span>simplifiée par le calcul.</span>
+                </h1>
+                <p>
+                    Calculez, analysez et maîtrisez les opérations
+                    de transformation alimentaire.
+                </p>
+            </section>
+
+            <!-- OUTILS -->
+            <section id="outils" class="tools-section">
+                <div class="section-heading">
+                    <div>
+                        <h2>Nos outils de calcul</h2>
+                        <p>Vos outils essentiels en technologie alimentaire.</p>
+                    </div>
+                    <span class="tool-count">03 MODULES</span>
+                </div>
+
+                <div class="tools-grid">
+
+                    <article class="tool-card">
+                        <div class="tool-icon">⚖️</div>
+                        <span class="status">En préparation</span>
+                        <h3>Calcul du rendement</h3>
+                        <p>
+                            Déterminez le rendement de vos opérations
+                            de transformation alimentaire.
+                        </p>
+                        <button onclick="afficherCalculateur()">Utiliser le calculateur</button>
+                    </article>
+
+                    <article class="tool-card">
+                        <div class="tool-icon">📊</div>
+                        <span class="status">En préparation</span>
+                        <h3>Bilan matière</h3>
+                        <p>
+                            Suivez les entrées, les sorties et les
+                            pertes de matière de vos procédés.
+                        </p>
+                        <button onclick="afficherBilan()">Utiliser le calculateur</button>
+                    </article>
+
+                    <article class="tool-card">
+                        <div class="tool-icon">🏭</div>
+                        <span class="status">En préparation</span>
+                        <h3>Quantité de matière première</h3>
+                        <p>
+                            Estimez la quantité initiale nécessaire
+                            pour atteindre une production cible.
+                        </p>
+                        <button onclick="afficherQuantite()">Utiliser le calculateur</button>
+                    </article>
+
+                </div>
+            </section>
+
+<!-- CALCULATEUR DE RENDEMENT -->
+
+<section id="calculateur" class="info-section">
+
+    <h2>Calculateur de rendement</h2>
+
+    <p>
+        Calculez le rendement massique de votre transformation alimentaire.
+    </p>
+
+    <div class="form-group">
+        <label for="masseInitiale">
+            Masse initiale (kg)
+        </label>
+
+        <input
+            type="number"
+            id="masseInitiale"
+            min="0"
+            step="any"
+            placeholder="Exemple : 100"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="masseFinale">
+            Masse finale (kg)
+        </label>
+
+        <input
+            type="number"
+            id="masseFinale"
+            min="0"
+            step="any"
+            placeholder="Exemple : 35"
+        >
+    </div>
+
+    <button class="calculate-button" onclick="calculerRendement()">
+        Calculer le rendement
+    </button>
+
+    <div id="resultat" class="result-box" aria-live="polite">
+        Votre résultat apparaîtra ici.
+    </div>
+
+</section>
+
+
+<!-- CALCULATEUR DE QUANTITE INITIALE -->
+
+<section id="quantite" class="info-section">
+
+    <h2>Calcul de matière première nécessaire</h2>
+
+    <p>
+        Déterminez la masse initiale nécessaire
+        pour atteindre votre objectif de production.
+    </p>
+
+    <div class="form-group">
+        <label for="masseSouhaitee">
+            Masse finale souhaitée (kg)
+        </label>
+
+        <input
+            type="number"
+            id="masseSouhaitee"
+            min="0"
+            step="any"
+            placeholder="Exemple : 500"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="rendementPrevu">
+            Rendement prévu (%)
+        </label>
+
+        <input
+            type="number"
+            id="rendementPrevu"
+            min="0"
+            step="any"
+            placeholder="Exemple : 25"
+        >
+    </div>
+
+    <button class="calculate-button"
+            onclick="calculerQuantite()">
+        Calculer la quantité nécessaire
+    </button>
+
+    <div id="resultatQuantite"
+         class="result-box"
+         aria-live="polite">
+        Votre résultat apparaîtra ici.
+    </div>
+
+</section>
+
+<!-- CALCULATEUR BILAN MATIÈRE -->
+<section class="info-section" id="bilan">
+
+    <h2>Bilan matière</h2>
+
+    <p>
+        Calculez la différence apparente entre la masse
+        initiale et la masse finale.
+    </p>
+
+    <div class="form-group">
+        <label>Masse initiale (kg)</label>
+        <input type="number" id="masseBilanInitiale"
+        placeholder="Exemple : 100">
+    </div>
+
+    <div class="form-group">
+        <label>Masse finale (kg)</label>
+        <input type="number" id="masseBilanFinale"
+        placeholder="Exemple : 85">
+    </div>
+
+    <button class="calculate-button"
+    onclick="calculerBilan()">
+        Calculer le bilan
+    </button>
+
+    <div class="result-box" id="resultatBilan">
+        Le résultat apparaîtra ici.
+    </div>
+
+</section>
+
+
+            <!-- HISTORIQUE DES CALCULS -->
+<section class="info-section" id="historique">
+
+    <h2>Historique des calculs</h2>
+
+    <p>Retrouvez ici vos précédents calculs.</p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Données</th>
+                    <th>Résultat</th>
+                </tr>
+            </thead>
+
+            <tbody id="tableHistorique">
+                <tr>
+                    <td colspan="4">
+                        Aucun calcul enregistré.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button class="calculate-button"
+    onclick="effacerHistorique()">
+        Effacer l'historique
+    </button>
+    <button class="calculate-button" onclick="exporterHistorique()">
+    Télécharger l'historique (CSV)
+    </button>
+
+</section>
+            <!-- A PROPOS -->
+            <footer id="apropos">
+                <p>FOODTECH CALC © 2026</p>
+                <p>Une solution numérique dédiée à la technologie alimentaire.</p>
+            </footer>
+
+        </main>
+    </div>
+
+</body>
+</html>
